@@ -1,0 +1,19 @@
+
+.container{
+    text-align: center;
+    background-color: ghostwhite;
+    margin-bottom:20px;
+}
+
+body{
+    background-color:ghostwhite;
+}
+
+#reebop2{
+    transform: scaleX(-1);
+}
+
+.babyreebop{
+    transform: scale(.5)
+}
+
