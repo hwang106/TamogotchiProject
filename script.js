@@ -26,10 +26,6 @@ function extinctionEnding(){
     endVideo.innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/M0yhHKWUa0g?controls=1&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
 }
 
-function successEnding(){
-
-}
-
 function myTimer(){
     
     if (reebopPop < 1){
@@ -73,21 +69,25 @@ function myTimer(){
 reproduceButton.addEventListener("click", (e) => {
     reebopPop++;
     // console.log(`This is the current Reebop population: ${reebopPop}.`);
-    reebopNursery.innerHTML = babyReebop.repeat(reebopPop - 2);
+    if (reebopPop >=2){
+        reebopNursery.innerHTML = babyReebop.repeat(reebopPop - 2);
+    }
     populationDisplay.innerHTML = `<h2> Reebop Population: ${reebopPop} </h2>`;
     if (reebopPop == 20){
         window.clearInterval(predationCountdown);
         window.alert("You have helped the reebops reach a sustainable population. Now just don't eat them!");
         document.getElementById("reproduce").disabled = true;
         document.getElementById("hunger").disabled = true;
-        endVideo.innerHTML = "Now that you've saved the Reebops from extinction, review the science behind Reebop inheritance!";
+        endVideo.innerHTML = "Now that you've saved the Reebops from extinction, you can be trusted to review the science behind Reebop inheritance!";
         scratchReview.innerHTML = '<iframe src="https://scratch.mit.edu/projects/357189554/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>';    
     }
 })
 
 destroyButton.addEventListener("click", (e) => {
     reebopPop--;
-    reebopNursery.innerHTML = babyReebop.repeat(reebopPop - 2);
+    if (reebopPop >=2){
+        reebopNursery.innerHTML = babyReebop.repeat(reebopPop - 2);
+    }
     populationDisplay.innerHTML = `<h2> Reebop Population: ${reebopPop} </h2>`;
     
     if (reebopPop < 1){
