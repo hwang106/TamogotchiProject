@@ -1,6 +1,7 @@
 // console.log("this script is running");
 
-let reproduceButton = document.querySelector("button");
+let reproduceButton = document.querySelector("#reproduce");
+let destroyButton = document.querySelector("#hunger"); 
 let populationDisplay = document.querySelector("#popNumber");
 let reebopOne = document.querySelector("#reebopDad");
 let reebopTwo = document.querySelector("#reebopMom");
@@ -73,5 +74,35 @@ reproduceButton.addEventListener("click", (e) => {
         endVideo.innerHTML = "Now that you've saved the Reebops from extinction, review the science behind Reebop inheritance!";
         scratchReview.innerHTML = '<iframe src="https://scratch.mit.edu/projects/357189554/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>';    
     }
+})
+
+destroyButton.addEventListener("click", (e) => {
+    reebopPop--;
+    reebopNursery.innerHTML = babyReebop.repeat(reebopPop - 2);
+    populationDisplay.innerHTML = `<h2> Reebop Population: ${reebopPop} </h2>`;
+    
+    if (reebopPop < 1){
+        window.clearInterval(predationCountdown);
+        reebopTwo.innerHTML = "";
+        reebopOne.innerHTML = "";
+        window.alert("No! The reebops have been eaten to extinction.");
+        document.getElementById("reproduce").disabled = true;
+        endVideo.innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/M0yhHKWUa0g?controls=1&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+        // scratchReview.innerHTML = '<iframe src="https://scratch.mit.edu/projects/357189554/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>';
+    }
+
+    // Changing button label to asexual reproduction
+    if (reebopPop == 1){
+        reproduceButton.innerHTML = "Click to Asexually Reproduce More Reebops";
+        reebopOne.innerHTML = "<img src='Reebop.svg' id='reebop1' alt='Image of Parent Reebop 1'>";
+        reebopTwo.innerHTML = "";
+    }
+
+    if (reebopPop >= 2){
+        reproduceButton.innerHTML = "Click to Reproduce More Reebops";
+        reebopOne.innerHTML = "<img src='Reebop.svg' id='reebop1' alt='Image of Parent Reebop 1'>";
+        reebopTwo.innerHTML = "<img src='Reebop.svg' id='reebop2' alt='Image of Parent Reebop 2'>";
+    }
+
 })
 
