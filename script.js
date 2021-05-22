@@ -16,17 +16,25 @@ const reebopPredator = "<img src='reebopdeath.webp' class='img-fluid'>";
 
 let predationCountdown = window.setInterval(myTimer, 1000);
 
+function extinctionEnding(){
+    window.clearInterval(predationCountdown);
+    reebopTwo.innerHTML = "";
+    reebopOne.innerHTML = "";
+    window.alert("No! The reebops have been eaten to extinction.");
+    document.getElementById("reproduce").disabled = true;
+    document.getElementById("hunger").disabled = true;
+    endVideo.innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/M0yhHKWUa0g?controls=1&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+}
+
+function successEnding(){
+
+}
+
 function myTimer(){
     
     if (reebopPop < 1){
     // console.log("Testing condition")
-        window.clearInterval(predationCountdown);
-        reebopTwo.innerHTML = "";
-        reebopOne.innerHTML = "";
-        window.alert("No! The reebops have been eaten to extinction.");
-        document.getElementById("reproduce").disabled = true;
-        endVideo.innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/M0yhHKWUa0g?controls=1&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-        // scratchReview.innerHTML = '<iframe src="https://scratch.mit.edu/projects/357189554/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>';
+        extinctionEnding();
     }
 
     // Changing button label to asexual reproduction
@@ -71,6 +79,7 @@ reproduceButton.addEventListener("click", (e) => {
         window.clearInterval(predationCountdown);
         window.alert("You have helped the reebops reach a sustainable population. Now just don't eat them!");
         document.getElementById("reproduce").disabled = true;
+        document.getElementById("hunger").disabled = true;
         endVideo.innerHTML = "Now that you've saved the Reebops from extinction, review the science behind Reebop inheritance!";
         scratchReview.innerHTML = '<iframe src="https://scratch.mit.edu/projects/357189554/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>';    
     }
@@ -82,13 +91,7 @@ destroyButton.addEventListener("click", (e) => {
     populationDisplay.innerHTML = `<h2> Reebop Population: ${reebopPop} </h2>`;
     
     if (reebopPop < 1){
-        window.clearInterval(predationCountdown);
-        reebopTwo.innerHTML = "";
-        reebopOne.innerHTML = "";
-        window.alert("No! The reebops have been eaten to extinction.");
-        document.getElementById("reproduce").disabled = true;
-        endVideo.innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/M0yhHKWUa0g?controls=1&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-        // scratchReview.innerHTML = '<iframe src="https://scratch.mit.edu/projects/357189554/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>';
+        extinctionEnding();
     }
 
     // Changing button label to asexual reproduction
